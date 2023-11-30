@@ -128,7 +128,7 @@ function pesanBarang() {
     const arrbulan = ["Januari","Februari","Maret","April","Mei","Juni","Juli","Agustus","September","Oktober","November","Desember"];
     const date = new Date();
     const waktu = `${date.getDate()}-${arrbulan[date.getMonth()]}-${date.getFullYear()}`;
-    const nomorWhatsApp = '62882005619735';
+    const nomorWhatsApp = '6283831153243';
     const hed = '\nQty - Nama Barang\n==================\n';
     
     const pesan = `----~~~--- ABM ---~~~----\nTanggal: ${waktu}\nPesanan Hari Ini:\n•••••••••©2023••••••••••${hed}`;
