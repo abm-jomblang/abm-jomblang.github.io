@@ -150,6 +150,7 @@ function pesanBarang() {
 
     // Hapus cookie setelah pesanan dibuat
     deleteCookie('cartProducts');
+    localStorage.removeItem('cartProducts');
     deleteAllCookies();
   } else {
     alert('Keranjang belanja kosong. Tambahkan barang terlebih dahulu.');
