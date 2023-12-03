@@ -120,6 +120,17 @@ function removeFromCart(productId) {
         saveCartToLocalStorage();
     }
 }
+// Fungsi untuk menghapus cookie dengan path penuh
+function deleteCookie(name) {
+  document.cookie = `${name}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
+}
+// Fungsi untuk menghapus semua cookie
+function deleteAllCookies() {
+  document.cookie.split(";").forEach((cookie) => {
+    const name = cookie.split("=")[0].trim();
+    document.cookie = `${name}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
+  });
+}
 
 function pesanBarang() {
   const cartItems = Array.from(document.querySelectorAll('#cart-list li'));
@@ -139,12 +150,10 @@ function pesanBarang() {
 
     // Hapus cookie setelah pesanan dibuat
     deleteCookie('cartProducts');
+    deleteAllCookies();
   } else {
     alert('Keranjang belanja kosong. Tambahkan barang terlebih dahulu.');
   }
 }
 
 // Fungsi untuk menghapus cookie
-function deleteCookie(name) {
-  document.cookie = `${name}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
-}
