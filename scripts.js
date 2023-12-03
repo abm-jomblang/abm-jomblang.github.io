@@ -38,7 +38,7 @@ productsCollection.once("value").then(function(snapshot) {
         
           <input type="number" id="quantity-${childSnapshot.key}" class="form-control d-block text-center" placeholder="Jumlah/${product.satuan}">
       
-      <button onclick="addToCart('${childSnapshot.key}')" class="btn btn-cart text-center mt-1 w-100">Add to Cart</button>
+      <button onclick="addToCart('${childSnapshot.key}')" class="btn btn-cart text-center mt-1 w-100">tambah ke keranjang</button>
       
         </div>
       </div>
@@ -138,7 +138,7 @@ function pesanBarang() {
     window.open(waLink, '_blank');
 
     // Hapus cookie setelah pesanan dibuat
-    deleteCookie('cartCookie');
+    deleteCookie('cartProducts');
   } else {
     alert('Keranjang belanja kosong. Tambahkan barang terlebih dahulu.');
   }
