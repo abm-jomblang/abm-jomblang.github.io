@@ -20,14 +20,19 @@ productsCollection.once("value").then(function(snapshot) {
   const productsContainer = document.getElementById('products-container');
 
   snapshot.forEach(function(childSnapshot) {
-    const product = childSnapshot.val();
+  const product = childSnapshot.val();
+
+  // Add this condition to check if the stock is not empty (true)
+  if (product.stok !== false) {
     const productCard = document.createElement('div');
     productCard.className = 'col-md-4';
 
     const formattedHarga = new Intl.NumberFormat('id-ID', {
-    style: 'currency',
-    currency: 'IDR',
-    minimumFractionDigits: 0 }).format(product.harga);
+      style: 'currency',
+      currency: 'IDR',
+      minimumFractionDigits: 0
+    }).format(product.harga);
+
     productCard.innerHTML = `
       <div class="card shadow">
         <img src="${product.imageurl}" class="card-img-top" alt="${product.name}">
@@ -38,13 +43,15 @@ productsCollection.once("value").then(function(snapshot) {
         
           <input type="number" id="quantity-${childSnapshot.key}" class="form-control d-block text-center" placeholder="Jumlah/${product.satuan}">
       
-      <button onclick="addToCart('${childSnapshot.key}')" class="btn btn-cart text-center mt-1 w-100">tambah ke keranjang</button>
+          <button onclick="addToCart('${childSnapshot.key}')" class="btn btn-cart text-center mt-1 w-100">tambah ke keranjang</button>
       
         </div>
       </div>
     `;
+
     productsContainer.appendChild(productCard);
-  });
+  }
+});
 });
 
 if (localStorage.getItem('cartProducts')) {
